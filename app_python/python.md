@@ -1,12 +1,12 @@
-#Best practices for simple python web application
-##Framework
+# Best practices for simple python web application
+## Framework
 In this simple app was used Flask framework, which has all 
 necessary functionalities to come up with task
-#Package manager
+# Package manager
 In this project Poetry package manager was used to solve 
 dependency problems
 
-#Linters
+# Linters
 - **pycodestyle -** tool to check your Python code against some of the style conventions in PEP 8.
 - **black -** most accepted auto-formatter for Python that follows a strict subset of PEP 8.
 - **isort -** a Python utility / library to sort imports or check them
