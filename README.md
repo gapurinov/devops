@@ -1,6 +1,6 @@
-#Moscow time
+# Moscow time
 This is a simple app which shows current time at Moscow.
-##Installation
+## Installation
 Clone this repository
 Go to the app_python file
 Install Poetry package manager 
@@ -9,12 +9,12 @@ cd app_python
 pip install poetry
 poetry install
 ```
-##Run
+## Run
 We will run our application using Poetry package manager
 ```bash
 poetry run python main.py
 ```
-##Docker
+## Docker
 Also we have an opportunity to run this app using docker.
 Firstly, we need to download our docker image from dockerhub
 ```bash
