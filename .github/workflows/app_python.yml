@@ -9,3 +9,28 @@ env:
   CODE: main.py  # source code
   TESTS: tests  # package with tests (inside source root)
   IMAGE_NAME: gapurinov/simple_app  # name for Docker image
+  
+jobs:
+    test_app:
+        runs-on: ubuntu-latest
+        defaults:
+          run:
+            working-directory: ${{ env.APP_PATH }}
+
+        env:
+          POETRY_VERSION: 1.1.8
+
+        steps:
+        - name: Checkout Github repository
+          uses: actions/checkout@v2
+
+        - name: Set up Python 3.9
+          uses: actions/setup-python@v2
+          with:
+            python-version: 3.9
+
+        - name: Install Poetry
+          run:  pip install Poetry
+                poetry install
+        - name: Run tests
+          run:  poetry run pytest tests
