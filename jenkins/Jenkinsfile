@@ -1,0 +1,64 @@
+pipeline {
+
+    environment {
+        POETRY_VERSION = '1.1.8'
+        APP_PATH = 'app_python'
+        HOME_PATH = '.'
+        CODE = 'main.py'
+        TESTS = 'tests'
+        registry = "gapurinov/simple_app"
+        registryCredential = 'docker_hub_secrets'
+        dockerImage = ''
+    }
+    agent {
+            dockerfile {
+                dir 'jenkins'
+                args '-u root -v $HOME/.cache:/root/.cache -v /var/run/docker.sock:/var/run/docker.sock'
+            }
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        stage('dependencies install') {
+            steps {
+                dir("${APP_PATH}") {
+                    sh 'poetry install'
+                }
+            }
+        }
+        stage('test_lint') {
+            steps {
+                parallel (
+                    'codestyle': {
+                        dir("${APP_PATH}") {
+                            sh 'poetry run isort ${CODE}'
+                        }
+                    },
+                    'lint': {
+                        dir("${APP_PATH}") {
+                            sh 'poetry run pylint ${CODE}'
+                        }
+                    },
+                    'tests': {
+                        dir("${APP_PATH}") {
+                            sh 'poetry run pytest ${TESTS}'
+                        }
+                    }
+                )
+            }
+        }
+        stage('Build docker image') {
+            steps {
+                script {
+                    docker.withRegistry('', registryCredential) {
+                        dockerImage.push()
+                    }
+                }
+            }
+        }
+    }
+}
