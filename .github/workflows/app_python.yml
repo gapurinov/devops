@@ -2,7 +2,7 @@ name: app_python
 
 on:
   push:
-    branches: [master]
+    branches: [main]
 
 env:
   APP_PATH: ./app_python  # source root
