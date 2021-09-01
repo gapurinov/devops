@@ -1,0 +1,11 @@
+name: app_python
+
+on:
+  push:
+    branches: [master]
+
+env:
+  APP_PATH: ./app_python  # source root
+  CODE: main.py  # source code
+  TESTS: tests  # package with tests (inside source root)
+  IMAGE_NAME: gapurinov/simple_app  # name for Docker image
