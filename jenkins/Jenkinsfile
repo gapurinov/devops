@@ -52,7 +52,17 @@ pipeline {
             }
         }
         stage('Build docker image') {
-            steps {
+            steps{
+                dir("${APP_PATH}") {
+                    script {
+                        dockerImage = docker.build registry + ":jenkins-$BUILD_NUMBER"
+                    }
+                }
+            }
+        }
+
+        stage('Deploy docker image') {
+            steps{
                 script {
                     docker.withRegistry('', registryCredential) {
                         dockerImage.push()
@@ -60,6 +70,9 @@ pipeline {
                 }
             }
         }
+    }
+    post {
+        cleanup { cleanWs() }
     }
 
 }
