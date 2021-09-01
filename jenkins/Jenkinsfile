@@ -11,26 +11,25 @@ pipeline {
         dockerImage = ''
     }
     agent {
-            dockerfile {
-                dir 'jenkins'
-                args '-u root -v $HOME/.cache:/root/.cache -v /var/run/docker.sock:/var/run/docker.sock'
-            }
+        dockerfile {
+            dir 'jenkins'
+            args '-u root -v $HOME/.cache:/root/.cache -v /var/run/docker.sock:/var/run/docker.sock'
+        }
     }
-
     stages {
         stage('Checkout') {
             steps {
                 checkout scm
             }
         }
-        stage('dependencies install') {
+        stage('deps') {
             steps {
                 dir("${APP_PATH}") {
                     sh 'poetry install'
                 }
             }
         }
-        stage('test_lint') {
+        stage('lint-test') {
             steps {
                 parallel (
                     'codestyle': {
@@ -51,28 +50,27 @@ pipeline {
                 )
             }
         }
-//         stage('Build docker image') {
-//             steps{
-//                 dir("${APP_PATH}") {
-//                     script {
-//                         dockerImage = docker.build registry + ":jenkins-$BUILD_NUMBER"
-//                     }
-//                 }
-//             }
-//         }
-//
-//         stage('Deploy docker image') {
-//             steps{
-//                 script {
-//                     docker.withRegistry('', registryCredential) {
-//                         dockerImage.push()
-//                     }
-//                 }
-//             }
-//         }
+        stage('Build docker image') {
+            steps{
+                dir("${APP_PATH}") {
+                    script {
+                        dockerImage = docker.build registry + ":jenkins-$BUILD_NUMBER"
+                    }
+                }
+            }
+        }
+
+        stage('Deploy docker image') {
+            steps{
+                script {
+                    docker.withRegistry('', registryCredential) {
+                        dockerImage.push()
+                    }
+                }
+            }
+        }
     }
     post {
         cleanup { cleanWs() }
     }
-
 }
