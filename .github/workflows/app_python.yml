@@ -39,6 +39,6 @@ jobs:
         - name: Run tests
           run:  poetry run pytest tests
         - name: Run linters
-          run:  poetry run pylint main.py
+          run:  poetry ru pylint main.py \
                 poetry run isort main.py
             
