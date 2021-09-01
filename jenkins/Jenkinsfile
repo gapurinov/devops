@@ -11,10 +11,10 @@ pipeline {
         dockerImage = ''
     }
     agent {
-            dockerfile {
-                dir 'jenkins'
-                args '-u root -v $HOME/.cache:/root/.cache -v /var/run/docker.sock:/var/run/docker.sock'
-            }
+        dockerfile {
+            dir 'jenkins'
+            args '-u root -v $HOME/.cache:/root/.cache -v /var/run/docker.sock:/var/run/docker.sock'
+        }
     }
 
     stages {
