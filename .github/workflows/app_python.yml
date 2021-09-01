@@ -11,7 +11,7 @@ env:
   IMAGE_NAME: gapurinov/simple_app  # name for Docker image
   
 jobs:
-    test_app:
+    test_lint:
         runs-on: ubuntu-latest
         defaults:
           run:
@@ -38,3 +38,8 @@ jobs:
           run: poetry install
         - name: Run tests
           run:  poetry run pytest tests
+        
+        - name: Run linters
+          run: poetry run pylint main.py
+               poetry run isort main.py
+            
