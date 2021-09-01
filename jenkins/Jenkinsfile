@@ -11,10 +11,10 @@ pipeline {
         dockerImage = ''
     }
     agent {
-            dockerfile {
-                dir 'jenkins'
-                args '-u root -v $HOME/.cache:/root/.cache -v /var/run/docker.sock:/var/run/docker.sock'
-            }
+        dockerfile {
+            dir 'jenkins'
+            args '-u root -v $HOME/.cache:/root/.cache -v /var/run/docker.sock:/var/run/docker.sock'
+        }
     }
 
     stages {
@@ -52,7 +52,17 @@ pipeline {
             }
         }
         stage('Build docker image') {
-            steps {
+            steps{
+                dir("${APP_PATH}") {
+                    script {
+                        dockerImage = docker.build registry + ":jenkins-$BUILD_NUMBER"
+                    }
+                }
+            }
+        }
+
+        stage('Deploy docker image') {
+            steps{
                 script {
                     docker.withRegistry('', registryCredential) {
                         dockerImage.push()
@@ -60,5 +70,8 @@ pipeline {
                 }
             }
         }
+    }
+    post {
+        cleanup { cleanWs() }
     }
 }
