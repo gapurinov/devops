@@ -42,7 +42,7 @@ jobs:
             poetry run pylint main.py
             poetry run isort main.py
     build_image:
-        needs: ["lint_test"]
+        needs: test_lint
         name: Push Docker image to Docker Hub
         runs-on: ubuntu-latest
         env:
