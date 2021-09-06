@@ -1,0 +1,7 @@
+---
+- name: Deploy app_python to the server
+  hosts: remote_server
+  become: yes
+
+  roles:
+    - roles/simple_app_deployment

@@ -1,0 +1,6 @@
+---
+# vars file for simple_app_deployment
+remote_install_path: /opt/simple_app
+docker_image_name: gapurinov/simple_app
+docker_image_version: latest
+docker_compose_name: docker-compose.yml
