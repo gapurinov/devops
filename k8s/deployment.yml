@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-app
+  labels:
+    app: simple-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: simple-app
+  template:
+    metadata:
+      labels:
+        app: simple-app
+    spec:
+      containers:
+      - name: simple-app
+        image: gapurinov/simple-app:latest
+        ports:
+        - containerPort: 5000
+        resources:
+          limits:
+            cpu: 125m
+            memory: 64Mi
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30

@@ -1,0 +1,18 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: simple-app
+  labels:
+    app: simple-app
+spec:
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
+      nodePort: 31378
+  selector:
+    app: simple-app
+  type: LoadBalancer
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack
