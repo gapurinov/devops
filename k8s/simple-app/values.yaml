@@ -18,6 +18,9 @@ secret:
   name: my-secret
   value: yerzhan
 
+configmap:
+  name: config-map
+
 serviceAccount:
   # Specifies whether a service account should be created
   create: true
