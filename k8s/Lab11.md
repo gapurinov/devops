@@ -1,5 +1,6 @@
 # Lab11
 - Creating secret
+  [![name](https://github.com/gapurinov/devops/blob/main/k8s/screenshots/Screen%20Shot%202021-09-27%20at%2021.47.33.png)]
   ![image info](./screenshots/Screen Shot 2021-09-27 at 21.47.33.png)
 - Listing secrets
   ![image_info](./screenshots/Screen Shot 2021-09-27 at 21.47.48.png)
