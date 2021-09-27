@@ -2,7 +2,7 @@
 - Creating secret
   [![name](https://github.com/gapurinov/devops/blob/main/k8s/screenshots/Screen%20Shot%202021-09-27%20at%2021.47.33.png)]
 - Listing secrets
-  [![name](https://github.com/gapurinov/devops/blob/main/k8s/screenshots/Screen%20Shot%202021-09-27%20at%2021.47.48.png]
+  [![name](https://github.com/gapurinov/devops/blob/main/k8s/screenshots/Screen%20Shot%202021-09-27%20at%2021.47.48.png)]
 - decoding secrets
   [![name](https://github.com/gapurinov/devops/blob/main/k8s/screenshots/Screen%20Shot%202021-09-27%20at%2021.47.59.png)]
   [![name](https://github.com/gapurinov/devops/blob/main/k8s/screenshots/Screen%20Shot%202021-09-27%20at%2021.54.50.png)]
