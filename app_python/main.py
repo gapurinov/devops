@@ -23,6 +23,8 @@ def home():
     time_zone = pytz.timezone("Europe/Moscow")
     # formatting taken time to HH:MM:SS
     moscow_now = datetime.now(time_zone).strftime("%H:%M:%S")
+    with open("my-visits.txt", "a") as file:
+        file.write('\n'+moscow_now)
     return """<h1 style='text-align:center'>Moscow Time</h1>
     <h1 style='text-align:center'>{}</h1>""".format(
         str(moscow_now)
