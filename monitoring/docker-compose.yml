@@ -5,7 +5,7 @@ networks:
 
 services:
   simple_app:
-    image: gapurinov/simple_app:latest
+    image: gapurinov/simple-app:latest
     container_name: simple_app_container
     ports:
       - "5000:5000"

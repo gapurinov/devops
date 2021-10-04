@@ -6,7 +6,7 @@ pipeline {
         HOME_PATH = '.'
         CODE = 'main.py'
         TESTS = 'tests'
-        registry = "gapurinov/simple_app"
+        registry = "gapurinov/simple-app"
         registryCredential = 'docker_hub_secrets'
         dockerImage = ''
     }

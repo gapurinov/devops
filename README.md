@@ -18,10 +18,10 @@ poetry run python main.py
 Also we have an opportunity to run this app using docker.
 Firstly, we need to download our docker image from dockerhub
 ```bash
-sudo docker pull gapurinov/simple_app
+sudo docker pull gapurinov/simple-app
 ```
 Then we need to run this docker image with command:
 ```bash
-sudo docker run -p 5000:5000 gapurinov/simple_app
+sudo docker run -p 5000:5000 gapurinov/simple-app
 ```
 Finally you can open 'http://127.0.0.1:5000/' on your browser.
