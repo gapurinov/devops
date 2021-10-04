@@ -86,5 +86,5 @@ kubectl exec [POD] [COMMAND] is DEPRECATED and will be removed in a future versi
 
 ```
 
-Since we are using 3 different pods everytime we access our server different pod is
-provided. And different my-visits.txt file are created.
+Since we are using 3 different pods everytime we access our service different pod is
+provided. And different my-visits.txt files are created.
